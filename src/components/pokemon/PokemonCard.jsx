@@ -56,13 +56,23 @@ const AddButton = styled.button`
   &:hover {
     background: #388E3C;
   }
+`;
+const DeleteButton = styled.button`
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  border-radius: 8px;
+  background: #ff6347;
+  color: white;
+  border: none;
+  cursor: pointer;
 
-  &:disabled {
-    background: #ccc;
+  &:hover {
+    background: #b34532;
   }
 `;
 
-const PokemonCard = ({pokemon, addPokemon}) => {
+const PokemonCard = ({pokemon, addPokemon, deletePokemon}) => {
   return (
     <Card>
       <ImageContainer>
@@ -73,7 +83,12 @@ const PokemonCard = ({pokemon, addPokemon}) => {
         <StatsContainer>
           No. {pokemon.id.toString().padStart(3, "0")}
         </StatsContainer>
-        <AddButton onClick={addPokemon}>추가</AddButton>
+        {
+          addPokemon ? 
+          <AddButton onClick={() => addPokemon(pokemon)}>추가</AddButton>
+          :
+          <DeleteButton onClick={() => deletePokemon(pokemon.id)}>삭제</DeleteButton>
+        }
       </CardContent>
     </Card>
   )
@@ -87,7 +102,8 @@ PokemonCard.propTypes = {
     id: PropTypes.number,
     description: PropTypes.string
   }),
-  addPokemon: PropTypes.func
+  addPokemon: PropTypes.func,
+  deletePokemon: PropTypes.func
 }
 
 export default PokemonCard
