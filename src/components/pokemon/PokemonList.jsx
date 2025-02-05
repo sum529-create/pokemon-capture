@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard"
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { PokemonContext } from "../../context/pokemonContext";
 
 const ListContainer = styled.ul`
   display: grid;
@@ -17,22 +18,17 @@ const ListContainer = styled.ul`
   }
 `;
 
-const PokemonList = ({addPokemon, pokemons}) => {
-
+const PokemonList = () => {
+  const {POKEMON_LIST} = useContext(PokemonContext)
   return (
     <ListContainer>
       {
-        pokemons.map(pokemon => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon}/>
+        POKEMON_LIST?.map(pokemon => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon}/>
         ))
       }
     </ListContainer>
   )
-}
-
-PokemonList.propTypes = {
-  addPokemon: PropTypes.func,
-  pokemons: PropTypes.array
 }
 
 export default PokemonList

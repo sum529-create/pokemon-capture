@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import PropTypes from "prop-types";
 import PokemonCard from "../pokemon/PokemonCard";
+import { useContext } from "react";
+import { PokemonContext } from "../../context/pokemonContext";
 
 const DashBoardWrapper = styled.div`
   width: 100%;
@@ -39,8 +40,9 @@ const PokeMonBox = styled.div`
   height: 0;
   border: 3px dashed gray;
 `
-const Dashboard = ({selectedPokemon, deletePokemon}) => {
-  
+const Dashboard = () => {
+  const {selectedPokemon} = useContext(PokemonContext)
+
   return (
     <DashBoardWrapper>
       <DashBoardMainText>나만의 포켓몬</DashBoardMainText>
@@ -48,7 +50,7 @@ const Dashboard = ({selectedPokemon, deletePokemon}) => {
         {
           selectedPokemon.map((pokemon, i) => 
             {if(pokemon?.id){
-              return <PokemonCard key={pokemon.id} pokemon={pokemon} deletePokemon={deletePokemon} />
+              return <PokemonCard key={pokemon.id} pokemon={pokemon} mode="checked"/>
             }else {
               return <PokeMonBox key={i.toString().padStart(2,"0")}/>
             }}
@@ -57,10 +59,6 @@ const Dashboard = ({selectedPokemon, deletePokemon}) => {
       </CaptureArea>
     </DashBoardWrapper>
   )
-}
-Dashboard.propTypes = {
-  selectedPokemon: PropTypes.array,
-  deletePokemon: PropTypes.func
 }
 
 export default Dashboard
