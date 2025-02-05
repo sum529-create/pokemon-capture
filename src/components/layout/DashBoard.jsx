@@ -12,6 +12,10 @@ const DashBoardWrapper = styled.div`
   gap: 15px;
   margin-bottom: 2rem;
 `
+const DashBoardMainText = styled.h2`
+  font-size: 2rem;
+  color: red;
+`
 const CaptureArea = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -39,7 +43,7 @@ const Dashboard = ({selectedPokemon, deletePokemon}) => {
   
   return (
     <DashBoardWrapper>
-      <h2>나만의 포켓몬</h2>
+      <DashBoardMainText>나만의 포켓몬</DashBoardMainText>
       <CaptureArea>
         {
           selectedPokemon.map((pokemon, i) => 

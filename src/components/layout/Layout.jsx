@@ -21,6 +21,7 @@ const Content = styled.div`
   width: 100%;
   margin:0 auto;
   padding: 2rem;
+  box-sizing: border-box;
 `
 
 const Layout = () => {
