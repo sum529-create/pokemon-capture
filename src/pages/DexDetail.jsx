@@ -111,7 +111,7 @@ const BackButton = styled.button`
   }
 `;
 
-const PokemonDetail = () => {
+const DexDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pokemonInfo = location.state;
@@ -141,4 +141,4 @@ const PokemonDetail = () => {
   )
 }
 
-export default PokemonDetail;
+export default DexDetail;
