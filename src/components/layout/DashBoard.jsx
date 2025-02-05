@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import PokemonCard from "../pokemon/PokemonCard";
-import { useContext } from "react";
-import { PokemonContext } from "../../context/pokemonContext";
+import { useSelector } from "react-redux";
 
 const DashBoardWrapper = styled.div`
   width: 100%;
@@ -41,7 +40,7 @@ const PokeMonBox = styled.div`
   border: 3px dashed gray;
 `
 const Dashboard = () => {
-  const {selectedPokemon} = useContext(PokemonContext)
+  const selectedPokemon =useSelector(state => state.pokemon.selectedPokemon)
 
   return (
     <DashBoardWrapper>

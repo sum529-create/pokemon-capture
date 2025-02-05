@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { PokemonContext } from "../../context/pokemonContext";
+import { addPokemon, deletePokemon } from "../../redux/slices/pokemonSlice";
+import { useDispatch } from "react-redux";
 
 const Card = styled.li`
   background: white;
@@ -76,37 +76,15 @@ const DeleteButton = styled.button`
 `;
 
 const PokemonCard = ({pokemon, mode}) => {
-  const {selectedPokemon,
-        selectedIdx,
-        setSelectedPokemon,
-        setSelectedIdx} = useContext(PokemonContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const addHandler = (e) => {
     e.stopPropagation();
-     if(selectedIdx >= 6){
-      return alert('더 이상 포켓몬을 추가할 수 없습니다.');
-    }
-    if(selectedPokemon.some(e => e.id === pokemon.id)){
-      return alert('같은 포켓몬을 추가할 수 없습니다.');
-    }
-    setSelectedPokemon(selectedPokemon.map((e,i) => i === selectedIdx ? pokemon : e))
-    setSelectedIdx(prev => prev + 1);
+    dispatch(addPokemon({...pokemon}))
   }
   const deleteHandler = (e) => {
     e.stopPropagation();
-    const deleteIdx = selectedPokemon.findIndex(e => e.id === pokemon.id);
-    setSelectedPokemon(prev => {
-      const filtered = prev.filter(e => e.id !== pokemon.id);
-      
-      while (filtered.length < 6) {
-        filtered.push("");
-      }
-      
-      return filtered;
-    });
-    if(deleteIdx < selectedIdx){
-      setSelectedIdx(pre => pre - 1);
-    }
+    dispatch(deletePokemon({id:pokemon.id}))
   }
   return (
     <Card onClick={() => {
