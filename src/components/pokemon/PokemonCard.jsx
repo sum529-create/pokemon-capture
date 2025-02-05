@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Card = styled.li`
   background: white;
@@ -56,15 +57,36 @@ const AddButton = styled.button`
   &:hover {
     background: #388E3C;
   }
+`;
+const DeleteButton = styled.button`
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  border-radius: 8px;
+  background: #ff6347;
+  color: white;
+  border: none;
+  cursor: pointer;
 
-  &:disabled {
-    background: #ccc;
+  &:hover {
+    background: #b34532;
   }
 `;
 
-const PokemonCard = ({pokemon, addPokemon}) => {
+const PokemonCard = ({pokemon, addPokemon, deletePokemon}) => {
+  const navigate = useNavigate();
+  const addHandler = (e) => {
+    e.stopPropagation();
+    addPokemon(pokemon)
+  }
+  const deleteHandler = (e) => {
+    e.stopPropagation();
+     deletePokemon(pokemon.id)
+  }
   return (
-    <Card>
+    <Card onClick={() => {
+            navigate(`/dex/${pokemon.id}`, {state: pokemon})
+          }}>
       <ImageContainer>
         <img src={pokemon.img_url} alt={pokemon.korean_name} />
       </ImageContainer>
@@ -73,7 +95,12 @@ const PokemonCard = ({pokemon, addPokemon}) => {
         <StatsContainer>
           No. {pokemon.id.toString().padStart(3, "0")}
         </StatsContainer>
-        <AddButton onClick={addPokemon}>추가</AddButton>
+        {
+          addPokemon ? 
+          <AddButton onClick={(e) => addHandler(e)}>추가</AddButton>
+          :
+          <DeleteButton onClick={(e) => deleteHandler(e)}>삭제</DeleteButton>
+        }
       </CardContent>
     </Card>
   )
@@ -87,7 +114,8 @@ PokemonCard.propTypes = {
     id: PropTypes.number,
     description: PropTypes.string
   }),
-  addPokemon: PropTypes.func
+  addPokemon: PropTypes.func,
+  deletePokemon: PropTypes.func
 }
 
 export default PokemonCard

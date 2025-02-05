@@ -1,5 +1,6 @@
-import { useState } from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types";
+import PokemonCard from "../pokemon/PokemonCard";
 
 const DashBoardWrapper = styled.div`
   width: 100%;
@@ -34,20 +35,28 @@ const PokeMonBox = styled.div`
   height: 0;
   border: 3px dashed gray;
 `
-const Dashboard = () => {
-  const [selectedPokemon, setSelectedPokemon] = useState(['A', 'B', 'C', 'D', 'E', 'F'])
+const Dashboard = ({selectedPokemon, deletePokemon}) => {
+  
   return (
     <DashBoardWrapper>
       <h2>나만의 포켓몬</h2>
       <CaptureArea>
         {
-          selectedPokemon.map((_, i) => (
-            <PokeMonBox key={i}/>
-          ))
+          selectedPokemon.map((pokemon, i) => 
+            {if(pokemon?.id){
+              return <PokemonCard key={pokemon.id} pokemon={pokemon} deletePokemon={deletePokemon} />
+            }else {
+              return <PokeMonBox key={i.toString().padStart(2,"0")}/>
+            }}
+          )
         }
       </CaptureArea>
     </DashBoardWrapper>
   )
+}
+Dashboard.propTypes = {
+  selectedPokemon: PropTypes.array,
+  deletePokemon: PropTypes.func
 }
 
 export default Dashboard

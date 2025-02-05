@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard"
-import { useState } from "react";
-import MOCK_DATA from "../../constants/mock/pokemonList";
 import PropTypes from "prop-types";
 
-const ListContainer = styled.div`
+const ListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(6, auto);
   gap: 20px;
@@ -19,14 +17,13 @@ const ListContainer = styled.div`
   }
 `;
 
-const PokemonList = ({addPokemon}) => {
-  const [pokemons, setPokemons] = useState(MOCK_DATA)
+const PokemonList = ({addPokemon, pokemons}) => {
 
   return (
     <ListContainer>
       {
         pokemons.map(pokemon => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={() => addPokemon(pokemon)}/>
+          <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon}/>
         ))
       }
     </ListContainer>
@@ -34,7 +31,8 @@ const PokemonList = ({addPokemon}) => {
 }
 
 PokemonList.propTypes = {
-  addPokemon: PropTypes.func
+  addPokemon: PropTypes.func,
+  pokemons: PropTypes.array
 }
 
 export default PokemonList
