@@ -139,7 +139,7 @@ PokemonCard.propTypes = {
     id: PropTypes.number,
     description: PropTypes.string
   }),
-  mode: PropTypes.bool
+  mode: PropTypes.string
 }
 
 export default PokemonCard
