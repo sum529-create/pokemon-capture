@@ -3,8 +3,8 @@ import PokemonList from "../components/pokemon/PokemonList"
 import MOCK_DATA from "../constants/mock/pokemonList";
 import { useState } from "react";
 
+const pokemons = MOCK_DATA;
 const Dex = () => {
-  const [pokemons] = useState(MOCK_DATA);
   const [selectedPokemon, setSelectedPokemon] = useState(['A', 'B', 'C', 'D', 'E', 'F'])
   const [selectedIdx, setSelectedIdx] = useState(0);
   const addPokemon = (data) => {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PokemonCard from "./PokemonCard"
 import PropTypes from "prop-types";
 
-const ListContainer = styled.div`
+const ListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(6, auto);
   gap: 20px;
