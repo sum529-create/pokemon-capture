@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard"
-import { useContext } from "react";
-import { PokemonContext } from "../../context/pokemonContext";
+import { useSelector } from "react-redux";
 
 const ListContainer = styled.ul`
   display: grid;
@@ -19,11 +18,11 @@ const ListContainer = styled.ul`
 `;
 
 const PokemonList = () => {
-  const {POKEMON_LIST} = useContext(PokemonContext)
+  const pokemonLists = useSelector(state => state.pokemon.pokemonList)
   return (
     <ListContainer>
       {
-        POKEMON_LIST?.map(pokemon => (
+        pokemonLists?.map(pokemon => (
           <PokemonCard key={pokemon.id} pokemon={pokemon}/>
         ))
       }
