@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Card = styled.li`
   background: white;
@@ -73,8 +74,19 @@ const DeleteButton = styled.button`
 `;
 
 const PokemonCard = ({pokemon, addPokemon, deletePokemon}) => {
+  const navigate = useNavigate();
+  const addHandler = (e) => {
+    e.stopPropagation();
+    addPokemon(pokemon)
+  }
+  const deleteHandler = (e) => {
+    e.stopPropagation();
+     deletePokemon(pokemon.id)
+  }
   return (
-    <Card>
+    <Card onClick={() => {
+            navigate(`/dex/${pokemon.id}`, {state: pokemon})
+          }}>
       <ImageContainer>
         <img src={pokemon.img_url} alt={pokemon.korean_name} />
       </ImageContainer>
@@ -85,9 +97,9 @@ const PokemonCard = ({pokemon, addPokemon, deletePokemon}) => {
         </StatsContainer>
         {
           addPokemon ? 
-          <AddButton onClick={() => addPokemon(pokemon)}>추가</AddButton>
+          <AddButton onClick={(e) => addHandler(e)}>추가</AddButton>
           :
-          <DeleteButton onClick={() => deletePokemon(pokemon.id)}>삭제</DeleteButton>
+          <DeleteButton onClick={(e) => deleteHandler(e)}>삭제</DeleteButton>
         }
       </CardContent>
     </Card>
