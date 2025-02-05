@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -7,6 +7,7 @@ const HeaderWrapper = styled.header`
   left: 0;
   right: 0;
   height: 80px;
+  z-index: 99;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
@@ -28,6 +29,7 @@ const NavLink = styled(Link)`
 `;
 
 const Header = () => {
+  const location = useLocation();
   return (
     <HeaderWrapper>
       <Nav>
