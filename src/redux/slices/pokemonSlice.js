@@ -12,12 +12,6 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {
     addPokemon: (state, action) => {
-      if (state.selectedIdx >= 6) {
-        return alert("더 이상 포켓몬을 추가할 수 없습니다.");
-      }
-      if (state.selectedPokemon.some((e) => e.id === action.payload.id)) {
-        return alert("같은 포켓몬을 추가할 수 없습니다.");
-      }
       state.selectedPokemon[state.selectedIdx] = action.payload;
       state.selectedIdx += 1;
     },
