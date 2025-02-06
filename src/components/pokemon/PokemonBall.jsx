@@ -3,11 +3,11 @@ import styled from "styled-components";
 const PokeBall = styled.div`
   width: 200px;
   height: 200px;
-  margin:0 auto;
+  margin: 0 auto;
   position: relative;
 
-  &::before{
-    content: '';
+  &::before {
+    content: "";
     background-color: red;
     border-radius: 150px 150px 0 0;
     position: absolute;
@@ -15,16 +15,16 @@ const PokeBall = styled.div`
     width: 100%;
     height: 50%;
   }
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     position: absolute;
-    bottom:0;
+    bottom: 0;
     width: 100%;
     height: 50%;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 0 0 150px 150px;
   }
-  .line{
+  .line {
     width: 100%;
     height: 10px;
     background-color: #000;
@@ -33,10 +33,10 @@ const PokeBall = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
-  .ball{
-    width:20%;
-    height:20%;
-    background-color: #FFF;
+  .ball {
+    width: 20%;
+    height: 20%;
+    background-color: #fff;
     position: absolute;
     border-radius: 50%;
     z-index: 3;
@@ -45,15 +45,15 @@ const PokeBall = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-`
+`;
 
 const PokemonBall = () => {
-  return(
+  return (
     <PokeBall>
-      <div className="line"/>
-      <div className="ball"/>
+      <div className="line" />
+      <div className="ball" />
     </PokeBall>
-  )
-}
+  );
+};
 
-export default PokemonBall
+export default PokemonBall;

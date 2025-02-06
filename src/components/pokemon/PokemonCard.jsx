@@ -24,8 +24,8 @@ const ImageContainer = styled.div`
   width: 100%;
   aspect-ratio: 1;
   background: #f5f5f5;
-  flex:1;
-  
+  flex: 1;
+
   img {
     width: 100%;
     height: 100%;
@@ -45,20 +45,20 @@ const PokemonName = styled.h3`
 const StatsContainer = styled.div`
   font-size: 0.875rem;
   color: #666;
-`
+`;
 
 const AddButton = styled.button`
   width: 100%;
   padding: 8px;
   margin-top: 12px;
   border-radius: 8px;
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background: #388E3C;
+    background: #388e3c;
   }
 `;
 const DeleteButton = styled.button`
@@ -76,31 +76,33 @@ const DeleteButton = styled.button`
   }
 `;
 
-const PokemonCard = ({pokemon, mode}) => {
+const PokemonCard = ({ pokemon, mode }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const pokemonStore = useSelector(state => state.pokemon)
-  const {selectedPokemon, selectedIdx} = pokemonStore;
+  const pokemonStore = useSelector((state) => state.pokemon);
+  const { selectedPokemon, selectedIdx } = pokemonStore;
   const addHandler = (e) => {
     e.stopPropagation();
-    if(selectedPokemon.some(e => e.id === pokemon.id)){
-      return toast.warn("같은 포켓몬을 추가할 수 없습니다.👀")
+    if (selectedPokemon.some((e) => e.id === pokemon.id)) {
+      return toast.warn("같은 포켓몬을 추가할 수 없습니다.👀");
     }
-    if(selectedIdx >= 6){
-      return toast.error('더 이상 선택할 수 없습니다.😓')
+    if (selectedIdx >= 6) {
+      return toast.error("더 이상 선택할 수 없습니다.😓");
     }
-    dispatch(addPokemon({...pokemon}))
-    toast.success(`아싸!! "${pokemon.korean_name}"을(를) 잡았다!💪`)
-  }
+    dispatch(addPokemon({ ...pokemon }));
+    toast.success(`아싸!! "${pokemon.korean_name}"을(를) 잡았다!💪`);
+  };
   const deleteHandler = (e) => {
     e.stopPropagation();
-    dispatch(deletePokemon({id:pokemon.id}))
-    toast.info(`"${pokemon.korean_name}"을(를) 떠나보냈습니다. 안녕..👋`)
-  }
+    dispatch(deletePokemon({ id: pokemon.id }));
+    toast.info(`"${pokemon.korean_name}"을(를) 떠나보냈습니다. 안녕..👋`);
+  };
   return (
-    <Card onClick={() => {
-            navigate(`/dex/${pokemon.id}`, {state: pokemon})
-          }}>
+    <Card
+      onClick={() => {
+        navigate(`/dex/${pokemon.id}`, { state: pokemon });
+      }}
+    >
       <ImageContainer>
         <img src={pokemon.img_url} alt={pokemon.korean_name} />
       </ImageContainer>
@@ -109,26 +111,25 @@ const PokemonCard = ({pokemon, mode}) => {
         <StatsContainer>
           No. {pokemon.id.toString().padStart(3, "0")}
         </StatsContainer>
-        {
-          mode !== "checked" ? 
+        {mode !== "checked" ? (
           <AddButton onClick={(e) => addHandler(e)}>추가</AddButton>
-          :
+        ) : (
           <DeleteButton onClick={(e) => deleteHandler(e)}>삭제</DeleteButton>
-        }
+        )}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 PokemonCard.propTypes = {
-  pokemon : PropTypes.shape({
+  pokemon: PropTypes.shape({
     img_url: PropTypes.string,
     korean_name: PropTypes.string,
     types: PropTypes.array,
     id: PropTypes.number,
-    description: PropTypes.string
+    description: PropTypes.string,
   }),
-  mode: PropTypes.string
-}
+  mode: PropTypes.string,
+};
 
-export default PokemonCard
+export default PokemonCard;

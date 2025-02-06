@@ -1,44 +1,44 @@
-import { Outlet } from "react-router-dom"
-import styled from "styled-components"
-import Header from "./Header"
+import { Outlet } from "react-router-dom";
+import styled from "styled-components";
+import Header from "./Header";
 
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`
+`;
 
 const Main = styled.main`
-  flex:1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 80px);
   position: relative;
-  background: linear-gradient(135deg, #0EA5E9 0%, #2563EB 100%);
-`
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+`;
 
 const Content = styled.div`
   max-width: 1200px;
-  flex:1;
+  flex: 1;
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
   padding: 2rem;
   box-sizing: border-box;
-`
+`;
 
 const Layout = () => {
   return (
     <LayoutWrapper>
-      <Header/>
+      <Header />
       <Main>
         <Content>
-          <Outlet/>
+          <Outlet />
         </Content>
       </Main>
     </LayoutWrapper>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
