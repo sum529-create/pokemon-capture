@@ -2,7 +2,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { addPokemon, deletePokemon } from "../../redux/slices/pokemonSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Card = styled.li`
   background: white;
@@ -78,13 +79,23 @@ const DeleteButton = styled.button`
 const PokemonCard = ({pokemon, mode}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const pokemonStore = useSelector(state => state.pokemon)
+  const {selectedPokemon, selectedIdx} = pokemonStore;
   const addHandler = (e) => {
     e.stopPropagation();
+    if(selectedPokemon.some(e => e.id === pokemon.id)){
+      return toast.warn("같은 포켓몬을 추가할 수 없습니다.👀")
+    }
+    if(selectedIdx >= 6){
+      return toast.error('더 이상 선택할 수 없습니다.😓')
+    }
     dispatch(addPokemon({...pokemon}))
+    toast.success(`아싸!! "${pokemon.korean_name}"을(를) 잡았다!💪`)
   }
   const deleteHandler = (e) => {
     e.stopPropagation();
     dispatch(deletePokemon({id:pokemon.id}))
+    toast.info(`"${pokemon.korean_name}"을(를) 떠나보냈습니다. 안녕..👋`)
   }
   return (
     <Card onClick={() => {
