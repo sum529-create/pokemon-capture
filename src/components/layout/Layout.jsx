@@ -14,10 +14,14 @@ const Main = styled.main`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  background: linear-gradient(135deg, #0EA5E9 0%, #2563EB 100%);
 `
 
 const Content = styled.div`
   max-width: 1200px;
+  flex:1;
   width: 100%;
   margin:0 auto;
   padding: 2rem;

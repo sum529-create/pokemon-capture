@@ -6,7 +6,22 @@ const ListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(6, auto);
   gap: 20px;
-  padding: 20px 0;
+  padding: 20px;
+  max-height: 62vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #FAFAFA;
+  background-image: 
+    linear-gradient(45deg, #e8e8e8 25%, transparent 25%),
+    linear-gradient(-45deg, #e8e8e8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e8e8e8 75%),
+    linear-gradient(-45deg, transparent 75%, #e8e8e8 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.05),
+    0 2px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);

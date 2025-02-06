@@ -1,4 +1,4 @@
-import Dashboard from "../components/layout/Dashboard"
+import Dashboard from "../components/layout/DashBoard"
 import PokemonList from "../components/pokemon/PokemonList"
 
 
