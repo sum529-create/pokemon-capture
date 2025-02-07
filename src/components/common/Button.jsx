@@ -26,14 +26,14 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({$variant="default", onClick, children}) => {
+const Button = ({variant="default", onClick, children}) => {
   return (
-    <StyledButton variant={$variant} onClick={onClick}>{children}</StyledButton>
+    <StyledButton $variant={variant} onClick={onClick}>{children}</StyledButton>
   )
 }
 
 Button.propTypes = {
-  $variant: PropTypes.oneOf(["primary", "secondary", "destructive", "default"]),
+  variant: PropTypes.oneOf(["primary", "secondary", "destructive", "default"]),
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired
 }
