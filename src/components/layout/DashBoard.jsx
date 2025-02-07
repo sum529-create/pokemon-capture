@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import PokemonCard from "../pokemon/PokemonCard";
 import { useSelector } from "react-redux";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { useEffect } from "react";
 
 const DashBoardWrapper = styled.div`
   width: 100%;
@@ -101,7 +103,10 @@ const PokeMonBox = styled.div`
 // 컴포넌트에 애니메이션 추가
 const Dashboard = () => {
   const selectedPokemon = useSelector((state) => state.pokemon.selectedPokemon);
-
+ const [, setLocalStg] = useLocalStorage('selectedPokemon', []);
+  useEffect(() => {
+    setLocalStg(selectedPokemon)
+  }, [selectedPokemon, setLocalStg])
   return (
     <DashBoardWrapper>
       <DashBoardMainText>나만의 포켓몬</DashBoardMainText>

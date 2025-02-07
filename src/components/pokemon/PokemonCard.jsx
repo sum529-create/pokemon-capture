@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { addPokemon, deletePokemon } from "../../redux/slices/pokemonSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { useEffect } from "react";
 
 const Card = styled.li`
   background: white;
@@ -81,6 +83,10 @@ const PokemonCard = ({ pokemon, mode }) => {
   const dispatch = useDispatch();
   const pokemonStore = useSelector((state) => state.pokemon);
   const { selectedPokemon, selectedIdx } = pokemonStore;
+  const [, setLocalStg] = useLocalStorage('selectedPokemon', []);
+  useEffect(() => {
+    setLocalStg(selectedPokemon)
+  }, [selectedPokemon, setLocalStg])
   const addHandler = (e) => {
     e.stopPropagation();
     if (selectedPokemon.some((e) => e.id === pokemon.id)) {
