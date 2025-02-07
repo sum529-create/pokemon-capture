@@ -1,13 +1,12 @@
-import Dashboard from "../components/layout/DashBoard"
-import PokemonList from "../components/pokemon/PokemonList"
-
+import Dashboard from "../components/layout/DashBoard";
+import PokemonList from "../components/pokemon/PokemonList";
 
 const Dex = () => {
   return (
     <>
-      <Dashboard/>
-      <PokemonList/>
+      <Dashboard />
+      <PokemonList />
     </>
-  )
-}
-export default Dex
+  );
+};
+export default Dex;

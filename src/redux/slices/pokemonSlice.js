@@ -17,10 +17,10 @@ const pokemonSlice = createSlice({
     },
     deletePokemon: (state, action) => {
       const deleteIdx = state.selectedPokemon.findIndex(
-        (e) => e.id === action.payload.id
+        (e) => e.id === action.payload.id,
       );
       const filtered = state.selectedPokemon.filter(
-        (e) => e.id !== action.payload.id
+        (e) => e.id !== action.payload.id,
       );
       while (filtered.length < 6) {
         filtered.push("");

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { addPokemon } from '../redux/slices/pokemonSlice';
+import { useDispatch } from "react-redux";
+import { addPokemon } from "../redux/slices/pokemonSlice";
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -25,7 +25,7 @@ const DetailCard = styled.div`
 `;
 
 const ImageSection = styled.div`
-  background: #F8F9FA;
+  background: #f8f9fa;
   border-radius: 16px;
   padding: 20px;
   display: flex;
@@ -59,27 +59,46 @@ const TypesContainer = styled.div`
 `;
 
 const TypeBadge = styled.span`
-  background: ${props => {
+  background: ${(props) => {
     switch (props.$type) {
-      case '노말': return '#A8A878';
-      case '불꽃': return '#F08030';
-      case '물': return '#6890F0';
-      case '전기': return '#F8D030';
-      case '풀': return '#78C850';
-      case '얼음': return '#98D8D8';
-      case '격투': return '#C03028';
-      case '독': return '#A040A0';
-      case '땅': return '#E0C068';
-      case '비행': return '#A890F0';
-      case '에스퍼': return '#F85888';
-      case '벌레': return '#A8B820';
-      case '바위': return '#B8A038';
-      case '고스트': return '#705898';
-      case '드래곤': return '#7038F8';
-      case '악': return '#705848';
-      case '강철': return '#B8B8D0';
-      case '페어리': return '#EE99AC';
-      default: return '#68A090';
+      case "노말":
+        return "#A8A878";
+      case "불꽃":
+        return "#F08030";
+      case "물":
+        return "#6890F0";
+      case "전기":
+        return "#F8D030";
+      case "풀":
+        return "#78C850";
+      case "얼음":
+        return "#98D8D8";
+      case "격투":
+        return "#C03028";
+      case "독":
+        return "#A040A0";
+      case "땅":
+        return "#E0C068";
+      case "비행":
+        return "#A890F0";
+      case "에스퍼":
+        return "#F85888";
+      case "벌레":
+        return "#A8B820";
+      case "바위":
+        return "#B8A038";
+      case "고스트":
+        return "#705898";
+      case "드래곤":
+        return "#7038F8";
+      case "악":
+        return "#705848";
+      case "강철":
+        return "#B8B8D0";
+      case "페어리":
+        return "#EE99AC";
+      default:
+        return "#68A090";
     }
   }};
   color: white;
@@ -97,7 +116,7 @@ const Description = styled.p`
 `;
 
 const BackButton = styled.button`
-  background: #4A90E2;
+  background: #4a90e2;
   color: white;
   border: none;
   width: 100%;
@@ -110,7 +129,7 @@ const BackButton = styled.button`
   margin-top: 20px;
 
   &:hover {
-    background: #357ABD;
+    background: #357abd;
   }
 `;
 
@@ -119,7 +138,7 @@ const AddButton = styled.button`
   padding: 12px 24px;
   margin-top: 12px;
   border-radius: 12px;
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   font-size: 16px;
   font-weight: 500;
@@ -128,7 +147,7 @@ const AddButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #388E3C;
+    background: #388e3c;
   }
 `;
 
@@ -137,14 +156,14 @@ const DexDetail = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const pokemonInfo = location.state;
-  
+
   const onBackPage = () => {
-    navigate('/dex')
-  }
+    navigate("/dex");
+  };
   const addDataHandler = () => {
-    dispatch(addPokemon(pokemonInfo))
-    navigate('/dex')
-  }
+    dispatch(addPokemon(pokemonInfo));
+    navigate("/dex");
+  };
 
   return (
     <PageContainer>
@@ -156,7 +175,9 @@ const DexDetail = () => {
           <PokemonName>{pokemonInfo.korean_name}</PokemonName>
           <TypesContainer>
             {pokemonInfo.types.map((type, i) => (
-              <TypeBadge key={i} $type={type}>{type}</TypeBadge>
+              <TypeBadge key={i} $type={type}>
+                {type}
+              </TypeBadge>
             ))}
           </TypesContainer>
           <Description>{pokemonInfo.description}</Description>
@@ -167,7 +188,7 @@ const DexDetail = () => {
         </InfoSection>
       </DetailCard>
     </PageContainer>
-  )
-}
+  );
+};
 
 export default DexDetail;
