@@ -126,5 +126,5 @@ git checkout prop-drilling
 - [ ] 테스트 코드 작성
 
 
-## 📜 라이선스
-This project is licensed under the MIT License
+## 📜 배포 사이트
+[pokemon-capture-seven.vercel.app](https://pokemon-capture-seven.vercel.app/)
