@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addPokemon } from "../redux/slices/pokemonSlice";
+import Button from "../components/common/Button";
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -115,42 +116,6 @@ const Description = styled.p`
   margin: 0;
 `;
 
-const BackButton = styled.button`
-  background: #4a90e2;
-  color: white;
-  border: none;
-  width: 100%;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 20px;
-
-  &:hover {
-    background: #357abd;
-  }
-`;
-
-const AddButton = styled.button`
-  width: 100%;
-  padding: 12px 24px;
-  margin-top: 12px;
-  border-radius: 12px;
-  background: #4caf50;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background 0.2s;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background: #388e3c;
-  }
-`;
-
 const DexDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -182,9 +147,9 @@ const DexDetail = () => {
           </TypesContainer>
           <Description>{pokemonInfo.description}</Description>
           <div>
-            <BackButton onClick={onBackPage}>뒤로가기</BackButton>
-            <AddButton onClick={addDataHandler}>추가</AddButton>
-          </div>
+            <Button variant="secondary" onClick={onBackPage}>뒤로가기</Button>
+            <Button variant="primary" onClick={addDataHandler}>추가</Button>
+          </div> 
         </InfoSection>
       </DetailCard>
     </PageContainer>

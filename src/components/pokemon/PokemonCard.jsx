@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useEffect } from "react";
+import Button from "../common/Button";
 
 const Card = styled.li`
   background: white;
@@ -49,35 +50,6 @@ const StatsContainer = styled.div`
   color: #666;
 `;
 
-const AddButton = styled.button`
-  width: 100%;
-  padding: 8px;
-  margin-top: 12px;
-  border-radius: 8px;
-  background: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background: #388e3c;
-  }
-`;
-const DeleteButton = styled.button`
-  width: 100%;
-  padding: 8px;
-  margin-top: 12px;
-  border-radius: 8px;
-  background: #ff6347;
-  color: white;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background: #b34532;
-  }
-`;
-
 const PokemonCard = ({ pokemon, mode }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -118,9 +90,9 @@ const PokemonCard = ({ pokemon, mode }) => {
           No. {pokemon.id.toString().padStart(3, "0")}
         </StatsContainer>
         {mode !== "checked" ? (
-          <AddButton onClick={(e) => addHandler(e)}>추가</AddButton>
+          <Button variant="primary" onClick={(e) => addHandler(e)}>추가</Button>
         ) : (
-          <DeleteButton onClick={(e) => deleteHandler(e)}>삭제</DeleteButton>
+          <Button variant="destructive" onClick={(e) => deleteHandler(e)}>삭제</Button>
         )}
       </CardContent>
     </Card>
