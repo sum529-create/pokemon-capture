@@ -12,6 +12,8 @@ const PokeBall = styled.div`
     border-radius: 150px 150px 0 0;
     position: absolute;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     height: 50%;
   }
@@ -19,6 +21,8 @@ const PokeBall = styled.div`
     content: "";
     position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     height: 50%;
     background-color: #fff;
