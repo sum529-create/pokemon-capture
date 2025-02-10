@@ -101,7 +101,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Nav>
-        <Logo to="/">PokeMon</Logo>
+        <Logo to="/">PokeMon Capture</Logo>
         <NavLink>
           <DexLink to="/dex" $isActive={location.pathname === "/dex"}>
             도감
