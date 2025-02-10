@@ -38,7 +38,8 @@ src/
 ├── pages/              # 페이지 컴포넌트
 ├── redux/              # Redux 관련 파일
 ├── shared/             # 라우터 등 공유 파일
-└── styles/             # 전역 스타일
+├── styles/             # 전역 스타일
+└── utils/              # 유틸리티 함수들을 모아둔 디렉토리
 ```
 
 ## 📂 브랜치 구조 및 구현 방식
@@ -64,7 +65,10 @@ src/
 - **react-toastify**: 알림 기능 개선
 - **refactor/cleanup**: 코드 정리 및 최적화
 - **refactor/component-button**: 버튼 컴포넌트 리팩토링
-- **style-global**: 전역 스타일 시스템 구축
+- **refactor/component-type-badge**: 포켓몬 타입 색상 로직을 유틸리티 함수로 분리
+- **refactor/favicon**: favicon 아이콘 변경
+- **refactor/pokemon-card-structure**: 포켓몬 Actions 로직 훅으로 분리
+- **refactor/styling**: UI개선을 위한 전반적인 미디어쿼리 리펙토링
 
 ## 💡 상태 관리 방식 비교
 
