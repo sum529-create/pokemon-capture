@@ -3,6 +3,7 @@ import PokemonCard from "../pokemon/PokemonCard";
 import { useSelector } from "react-redux";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useEffect } from "react";
+import { POKEMON_MAX_COUNT } from "../../constants/pokemon";
 
 const DashBoardWrapper = styled.div`
   width: 100%;
@@ -52,7 +53,7 @@ const DashBoardMainText = styled.h2`
 
 const CaptureArea = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(${POKEMON_MAX_COUNT}, 1fr);
   gap: 20px;
   width: 100%;
   min-height: 200px; // 최소 높이 설정
