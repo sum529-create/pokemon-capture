@@ -79,6 +79,15 @@ const PokeMonBox = styled.div`
   transition: all 0.3s ease;
   cursor: pointer;
 
+  /* 마지막 줄 2개 아이템을 중앙으로 */
+  &:nth-last-child(2) {
+    grid-column: 2 / 3;
+  }
+
+  &:last-child {
+    grid-column: 3 / 4;
+  }
+
   &::before {
     content: "+";
     position: absolute;

@@ -7,7 +7,6 @@ const ListContainer = styled.ul`
   grid-template-columns: repeat(6, auto);
   gap: 20px;
   padding: 20px;
-  max-height: 50vh;
   overflow-y: auto;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

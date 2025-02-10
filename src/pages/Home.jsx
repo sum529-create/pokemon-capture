@@ -9,18 +9,9 @@ const HomeContainer = styled.div`
   height: calc(100vh - 160px);
   box-sizing: border-box;
 `;
-const ContentWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  text-align: left;
-`;
 const TextSection = styled.div`
   color: #fff;
+  word-break: keep-all;
 `;
 const MainText = styled.h1`
   font-size: 3.5rem;
@@ -60,6 +51,32 @@ const ImageSection = styled.div`
 const PokeBall = styled.div`
   animation: float 3s ease-in-out infinite;
   transform-origin: center center;
+`;
+const ContentWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  text-align: left;
+
+  @media (max-width: 1024px){
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    text-align: center;
+
+    ${TextSection} {
+      order: 2; /* 아래로 이동 */
+    }
+    ${ImageSection} {
+      order: 1; /* 위로 이동 */
+    }
+  }
+  @media (max-width: 768px){
+    grid-template-columns: 1fr;
+  }
 `;
 const Home = () => {
   return (
