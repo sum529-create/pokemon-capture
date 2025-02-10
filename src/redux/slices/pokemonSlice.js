@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import MOCK_DATA from "../../constants/mock/pokemonList";
+import { POKEMON_MAX_COUNT } from "../../constants/pokemon";
 
 const initialState = {
   pokemonList: MOCK_DATA,
@@ -17,12 +18,12 @@ const pokemonSlice = createSlice({
     },
     deletePokemon: (state, action) => {
       const deleteIdx = state.selectedPokemon.findIndex(
-        (e) => e.id === action.payload.id,
+        (e) => e.id === action.payload.id
       );
       const filtered = state.selectedPokemon.filter(
-        (e) => e.id !== action.payload.id,
+        (e) => e.id !== action.payload.id
       );
-      while (filtered.length < 6) {
+      while (filtered.length < POKEMON_MAX_COUNT) {
         filtered.push("");
       }
       state.selectedPokemon = filtered;

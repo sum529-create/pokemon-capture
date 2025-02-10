@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
 import { useSelector } from "react-redux";
+import { POKEMON_MAX_COUNT } from "../../constants/pokemon";
 
 const ListContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(${POKEMON_MAX_COUNT}, auto);
   gap: 20px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.05);
