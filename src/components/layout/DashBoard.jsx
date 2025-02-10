@@ -8,7 +8,7 @@ const DashBoardWrapper = styled.div`
   width: 100%;
   background: white;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1rem 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
   position: relative;

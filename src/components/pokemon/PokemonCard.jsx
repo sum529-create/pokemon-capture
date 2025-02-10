@@ -8,18 +8,36 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { useEffect } from "react";
 import Button from "../common/Button";
 
+const CardContent = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.95); // 반투명 배경
+  transform: translateY(100%); // 처음에는 숨김
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px); // 배경 블러 효과
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
 const Card = styled.li`
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
+  transition: all 0.2s;
+  position: relative; // 자식 요소의 absolute 포지셔닝을 위해 추가
 
   &:hover {
     transform: translateY(-4px);
+    
+    ${CardContent} {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 `;
 
@@ -27,17 +45,12 @@ const ImageContainer = styled.div`
   width: 100%;
   aspect-ratio: 1;
   background: #f5f5f5;
-  flex: 1;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`;
-
-const CardContent = styled.div`
-  padding: 16px;
 `;
 
 const PokemonName = styled.h3`
@@ -48,6 +61,7 @@ const PokemonName = styled.h3`
 const StatsContainer = styled.div`
   font-size: 0.875rem;
   color: #666;
+  margin-bottom: 8px;
 `;
 
 const PokemonCard = ({ pokemon, mode }) => {
