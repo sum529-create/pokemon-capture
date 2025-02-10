@@ -17,21 +17,21 @@ const DashBoardWrapper = styled.div`
   background: linear-gradient(
     180deg,
     #ff424d 0%,
-    #ff424d 100px,
+    #ff424d 90px,
+    #1a1a1a 90px,
     #1a1a1a 100px,
-    #1a1a1a 110px,
-    #ffffff 110px,
+    #ffffff 100px,
     #ffffff 100%
   );
 
   &::before {
     content: "";
     position: absolute;
-    top: 100px;
+    top: 95px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     background: white;
     border: 8px solid #1a1a1a;
     border-radius: 50%;
@@ -42,7 +42,7 @@ const DashBoardWrapper = styled.div`
 const DashBoardMainText = styled.h2`
   font-size: 1.75rem;
   color: #fff;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -69,6 +69,9 @@ const CaptureArea = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+  @media (max-width: 375px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
