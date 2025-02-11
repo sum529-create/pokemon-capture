@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addPokemon } from "../redux/slices/pokemonSlice";
 import Button from "../components/common/Button";
 import { getTypeColor } from "../utils/pokemonLabelUtils";
+import { usePokemonActions } from "../hooks/usePokemonActions";
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -79,14 +78,14 @@ const Description = styled.p`
 const DexDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
   const pokemonInfo = location.state;
+  const {addHandler} = usePokemonActions(pokemonInfo);
 
   const onBackPage = () => {
     navigate("/dex");
   };
-  const addDataHandler = () => {
-    dispatch(addPokemon(pokemonInfo));
+  const addDataHandler = (e) => {
+    addHandler(e);
     navigate("/dex");
   };
 
